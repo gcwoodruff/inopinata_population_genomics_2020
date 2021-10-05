@@ -853,6 +853,9 @@ cat $wkdir/19_cat_biallelic_invariant/00_header $wkdir/25_splitstree/inopinata_2
 
 cd $wkdir/25_splitstree/
 
+#vcf2phylip.py by Edgardo M. Ortiz
+#available at https://github.com/edgardomortiz/vcf2phylip/blob/master/vcf2phylip.py
+
 #vcf to nexus
 python $wkdir/additional_files/vcf2phylip.py --input inopinata_24_biallelic_snps_20k_random_snps.vcf -n -f &
 
