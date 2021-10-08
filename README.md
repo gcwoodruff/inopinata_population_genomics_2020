@@ -12,30 +12,30 @@ Specifics about software versions can be found here.
 software_and_versions.txt
 ```
 
+
 This was used to process raw reads.
 ```
 process_and_demultiplex_reads.sh 
 ```
+
 
 This was used to align/filter reads, call genotypes, and estimate population genetic statistics (Pi, FST, FIS).
 ```
 process_and_demultiplex_reads.sh 
 ```
 
+
 This was used to process previously-available _C. elegans_ alignments.
 ```
 elegans.sh 
 ```
 
-This was used to extract summary statistics/effect sizes and to perform PCA and DAPC.
-```
-statistics.R
-```
 
 This was used to extract summary statistics/effect sizes and to perform PCA and DAPC.
 ```
 statistics.R
 ```
+
 These were used to extract site coverage information.
 ```
 coverage.sh
