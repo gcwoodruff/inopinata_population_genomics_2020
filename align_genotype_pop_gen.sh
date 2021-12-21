@@ -496,7 +496,7 @@ sed '1d' inopinata_females_X.csv > inopinata_females_X_no_header
 #combine autosomes and X pi estimates
 cat inopinata_autosomes_stats.csv inopinata_females_X_no_header > inopinata_autosomes_females_X_pi.csv
 
-#add species id's and C. elegans data... see elegans_pipeline.sh for elegans data
+#add species id's and C. elegans data... see elegans.sh for elegans data
 
 awk 'BEGIN {FS=","} {OFS=","} {print $0,"C. inopinata"}' inopinata_autosomes_females_X_pi.csv > inopinata_autosomes_females_X_pi.tmp.csv
 
@@ -504,7 +504,7 @@ awk 'BEGIN {FS=","} {OFS=","} {print $0,"C. inopinata"}' inopinata_autosomes_fem
 sed '0,/C. inopinata/{s/C. inopinata/species/}' inopinata_autosomes_females_X_pi.tmp.csv > inopinata_autosomes_females_X_pi.csv 
 
 #comibine with C. elegans data
-	#see elegans_pipeline.sh for elegans data
+	#see elegans.sh for elegans data
 cat inopinata_autosomes_females_X_pi.csv $wkdir/elegans/11_popgenwindows_py/elegans_stats.csv > ino_elg_pi.csv
 
 
