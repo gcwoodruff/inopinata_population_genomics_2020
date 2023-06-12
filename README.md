@@ -21,7 +21,7 @@ process_and_demultiplex_reads.sh
 
 This was used to align/filter reads, call genotypes, and estimate population genetic statistics (Pi, FST, FIS).
 ```
-process_and_demultiplex_reads.sh 
+align_genotype_pop_gen.sh 
 ```
 
 
