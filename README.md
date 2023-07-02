@@ -21,7 +21,7 @@ process_and_demultiplex_reads.sh
 
 This was used to align/filter reads, call genotypes, and estimate population genetic statistics (Pi, FST, FIS).
 ```
-align_genotype_pop_gen.sh 
+align_genotype_pop_gen_2023.sh 
 ```
 
 
@@ -43,5 +43,11 @@ coverage.sh
 ```
 coverage.R
 ```
+
+This was used to align/filter reads, call genotypes, and estimate population genetic statistics (Pi, FST, FIS) in an older version of this study.
+```
+align_genotype_pop_gen.sh 
+```
+
 
 If there are any questions about this please contact me at gcwoodruff@ou.edu.
