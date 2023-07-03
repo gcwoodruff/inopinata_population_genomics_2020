@@ -45,13 +45,15 @@ coverage.sh
 ```
 coverage.R
 ```
-This was used to make the last supplemental figure concerning nucleotide diversity estimates in RAD data.
-```
- elegans_subsample_RAD.sh
-```
+
 This was used to align/filter reads, call genotypes, and estimate population genetic statistics (Pi, FST, FIS) in an older version of this study.
 ```
 align_genotype_pop_gen.sh 
+```
+
+This was used to make the last supplemental figure concerning nucleotide diversity estimates in RAD data.
+```
+ elegans_subsample_RAD.sh
 ```
 
 Code for a previous version of this manuscript can be found here.
