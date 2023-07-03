@@ -1,5 +1,7 @@
 # _C. inopinata_ population genomics
 
+__Note: This repository is currently being revised.__
+
 Here are brief descriptions of the code and data associated with Woodruff et al. 2021 manuscript "Alignment of genetic differentiation across trophic levels in a fig community."
 
 Downstream data used for analysis and figures can be found in the folder "data." Various additional files needed to run some commands can be found in the folder "additional_files."
@@ -21,7 +23,7 @@ process_and_demultiplex_reads.sh
 
 This was used to align/filter reads, call genotypes, and estimate population genetic statistics (Pi, FST, FIS).
 ```
-align_genotype_pop_gen_2023.sh 
+align_genotype_pop_gen.sh 
 ```
 
 
@@ -49,5 +51,9 @@ This was used to align/filter reads, call genotypes, and estimate population gen
 align_genotype_pop_gen.sh 
 ```
 
+Code for a previous version of this manuscript can be found here.
+```
+2021 code
+```
 
 If there are any questions about this please contact me at gcwoodruff@ou.edu.
