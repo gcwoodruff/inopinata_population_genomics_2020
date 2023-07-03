@@ -2,7 +2,7 @@
 
 __Note: This repository is currently being revised.__
 
-Here are brief descriptions of the code and data associated with Woodruff et al. 2021 manuscript "Alignment of genetic differentiation across trophic levels in a fig community."
+Here are brief descriptions of the code and data associated with Woodruff et al. 2023 manuscript "Patterns of genomic diversity in a fig-associated close relative of _C. elegans_."
 
 Downstream data used for analysis and figures can be found in the folder "data." Various additional files needed to run some commands can be found in the folder "additional_files."
 
