@@ -1,6 +1,6 @@
 # _C. inopinata_ population genomics
 
-__Note: This repository is currently being revised (7-3-2023).__
+__Note: This repository is currently being revised (7/3/2023).__
 
 Here are brief descriptions of the code and data associated with Woodruff et al. 2023 manuscript "Patterns of genomic diversity in a fig-associated close relative of _C. elegans_."
 
