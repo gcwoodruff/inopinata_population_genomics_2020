@@ -1,0 +1,16 @@
+#versions
+software	version
+
+FastQC	0.11.5
+FASTX-Toolkit fastx_trimmer	0.0.13
+stacks process_radtags	2.0
+GMAP-GSNAP gsnap	2021-12-17
+samtools	1.11
+bcftools 	1.11
+popgenwindows.py	retrieved 2019-05-28
+stacks populations	2.2
+bedtools	2.27.1
+EMBOSS	6.6.0
+tabix	0.2.6
+vcftools	0.1.16
+popgenwindows	2019-05-28
