@@ -34,6 +34,13 @@ Pi in 10kb genomic windows
 ```
 ino_elg_pi.csv
 ```
+Pi for various genomic regions in 10kb genomic regions
+```
+exon_intron_pi.csv
+genic_intergenic_pi.csv
+codon_position_elegans_pi.csv
+codon_position_ino_pi.csv
+```
 
 Input for Splitstree
 ```
