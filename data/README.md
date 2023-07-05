@@ -30,11 +30,11 @@ FIS in 10kb genomic windows
 fis_elegans_and_inopinata.tsv
 ```
 
-Pi in 10kb genomic windows
+Pi in 10 kb genomic windows
 ```
 ino_elg_pi.csv
 ```
-Pi for various genomic regions in 10kb genomic regions
+Pi for various functional genomic regions in 10 kb windows
 ```
 exon_intron_pi.csv
 genic_intergenic_pi.csv
