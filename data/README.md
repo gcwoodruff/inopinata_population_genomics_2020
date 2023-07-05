@@ -17,7 +17,7 @@ all_fst_combined.csv
 
 Ceratosolen bisculatus _F_ statistics extracted from previous studies
 ```
-bisculatus_data.tsv
+bisulcatus_data.tsv
 ```
 
 DAPC cluster assignments
