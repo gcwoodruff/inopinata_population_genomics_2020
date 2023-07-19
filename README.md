@@ -36,6 +36,12 @@ This was used to extract summary statistics/effect sizes and to perform PCA and 
 statistics.R
 ```
 
+This was used to make figures.
+```
+figures.R
+```
+
+
 These were used to extract site coverage information.
 ```
 coverage.sh
