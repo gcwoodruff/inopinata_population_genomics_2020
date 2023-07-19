@@ -1,0 +1,11 @@
+.y.	group1	group2	effsize	n1	n2	conf.low	conf.high	magnitude	species	effsize2	conf_high	conf_low	category
+pi_all	Genic	Intergenic	-0.0470821980475508	8227	5808	-0.08	-0.01	negligible	C. elegans	0.0470821980475508	0.08	0.01	Genic/intergenic
+pi_all	Genic	Intergenic	-0.370335613933746	4828	3892	-0.41	-0.33	small	C. inopinata	0.370335613933746	0.41	0.33	Genic/intergenic
+pi_all	Exon	Intron	-0.0395649846656764	7720	6342	-0.07	-0.007	negligible	C. elegans	0.0395649846656764	0.07	0.007	Exon/intron
+pi_all	Exon	Intron	-0.972111365284131	2873	3016	-1.03	-0.92	large	C. inopinata	0.972111365284131	1.03	0.92	Exon/intron
+pi_all	One	Two	0.0888572531101372	3920	3922	0.04	0.13	negligible	C. elegans	-0.0888572531101372	-0.04	-0.13	Codon position
+pi_all	One	Three	-0.278785781626552	3920	3918	-0.31	-0.25	small	C. elegans	0.278785781626552	0.31	0.25	Codon position
+pi_all	Two	Three	-0.329390320708501	3922	3918	-0.36	-0.3	small	C. elegans	0.329390320708501	0.36	0.3	Codon position
+pi_all	One	Two	0.241972384903519	709	722	0.14	0.34	small	C. inopinata	-0.241972384903519	-0.14	-0.34	Codon position
+pi_all	One	Three	-1.25368775857919	709	692	-1.37	-1.14	large	C. inopinata	1.25368775857919	1.37	1.14	Codon position
+pi_all	Two	Three	-1.46152244768352	722	692	-1.57	-1.37	large	C. inopinata	1.46152244768352	1.57	1.37	Codon position
