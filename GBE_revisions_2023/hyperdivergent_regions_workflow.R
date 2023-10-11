@@ -18,7 +18,7 @@ inop$V6 <- sequence(rle(as.character(inop$V5))$lengths)
 
 inop_snp_windows <- inop[inop$V5 == FALSE,]
 
-#get places where the counter is > 8
+#get places where the counter is > 8 ; here the idea is, do we have consecutive 1 kb windows with segregating sites? That is, are we close to meeting the conditions of the definition of hyper-divergent in Lee et al. 2021?
 
 inop_snp_windows_nine <- inop_snp_windows[inop_snp_windows$V6 > 8,]
 
@@ -47,20 +47,23 @@ inop_snp_windows_nine <- inop_snp_windows[inop_snp_windows$V6 > 8,]
 
 nrow(inop_snp_windows_nine[inop_snp_windows_nine$V6 == 9,])
 #[1] 11
-#11 windows
+#11 windows 
+#that is the number in the revision
 
 inop_snp_windows_nine$window <- seq(1,nrow(inop_snp_windows_nine),1)
 
 
-#Define some ranges to extract
+#Define some ranges to extract (above we just have that last window ; I want all of the consecutive ones)
 upper<- as.integer(rownames(inop_snp_windows_nine)) - 8
 lower<- as.integer(rownames(inop_snp_windows_nine))
 
+#making some empty variables to put data in
 inop_consec_hyper <- NULL
 some_rows <- NULL
 number_rows_greater_15_snps <- NULL
 newdf <- NULL
 
+# loop to get the number of rows with more than 15 variants in each window along the consecutive windows. if at least 8 are greater than 15, we have a hyper-divergent region!
 for (row in 1:nrow(inop_snp_windows_nine)) {
  some_rows <- as.character(upper[row]:lower[row])
  the_inop_some_rows <- inop[some_rows,]
@@ -92,7 +95,7 @@ inop_consec_hyper
 #18          94168          94176                           0
 #19          94169          94177                           0
 
-#ZERO hyperdivergent regions by the Lee et al. 2021 definition. Unsurprising, considering the definition assumes WGS.
+#ZERO hyperdivergent regions by the Lee et al. 2021 definition. Unsurprising, considering the definition is used in a WGS study.
 
 #and to be sure,
 
@@ -166,7 +169,9 @@ elerad_snp_windows_nine <- elerad_snp_windows[elerad_snp_windows$V6 > 8,]
 
 nrow(elerad_snp_windows[elerad_snp_windows$V6 == 9,])
 #18 windows
+#this is the figure in the paper
 
+#doing what we did before
 elerad_snp_windows_nine$window <- seq(1,nrow(elerad_snp_windows_nine),1)
 
 upper<- as.integer(rownames(elerad_snp_windows_nine)) - 8
@@ -371,245 +376,5 @@ library(ggforce)
 ggplot(all_seg_sites_na_omit, aes(x = data, y = V4)) + geom_sina(size=1, alpha=1,scale="width") + stat_summary(fun = mean, fun.min = mean, fun.max = mean, geom = "crossbar", width = 0.5, colour="red",) + theme_cowplot() + ylab("Segregating sites per 1kb window")
 
 
-ggsave("segregating_sites_sina_plot.png",height=8,width=10,units="in",bg="white")
-
-
-#from my first attempt at this (10/3), just going through each window one at a time. for elegans, I wrote a for loop that I re-used for inopinata.
-
-
-
-
-#there are so few of these, I can just go through them by hand for now.
-#the first window appears to be a stretch of 12 1kb windows
-
-some_rows <- as.character(upper[1]:lower[4])
-
-inop[some_rows,]
-
-#Window 1
-
-#            V1      V2      V3 V4    V5 V6
-#3669 Sp34_Chr1 3668000 3669000 NA  TRUE  4
-#3670 Sp34_Chr1 3669000 3670000  1 FALSE  1
-#3671 Sp34_Chr1 3670000 3671000  2 FALSE  2
-#3672 Sp34_Chr1 3671000 3672000  4 FALSE  3
-#3673 Sp34_Chr1 3672000 3673000 25 FALSE  4
-#3674 Sp34_Chr1 3673000 3674000 23 FALSE  5
-#3675 Sp34_Chr1 3674000 3675000  1 FALSE  6
-#3676 Sp34_Chr1 3675000 3676000  4 FALSE  7
-#3677 Sp34_Chr1 3676000 3677000  4 FALSE  8
-#3678 Sp34_Chr1 3677000 3678000 21 FALSE  9
-#3679 Sp34_Chr1 3678000 3679000  8 FALSE 10
-#3680 Sp34_Chr1 3679000 3680000  3 FALSE 11
-#3681 Sp34_Chr1 3680000 3681000 30 FALSE 12
-#3682 Sp34_Chr1 3681000 3682000 NA  TRUE  1
-
-#a bunch of these windows have <16 SNP's!
-
-#ok, next window
-
-some_rows <- as.character(upper[5]:lower[5])
-
-inop[some_rows,]
-
-#Window 2
-
-#            V1      V2      V3 V4    V5 V6
-#5337 Sp34_Chr1 5336000 5337000 NA  TRUE  1
-#5338 Sp34_Chr1 5337000 5338000  1 FALSE  1
-#5339 Sp34_Chr1 5338000 5339000  3 FALSE  2
-#5340 Sp34_Chr1 5339000 5340000  2 FALSE  3
-#5341 Sp34_Chr1 5340000 5341000 22 FALSE  4
-#5342 Sp34_Chr1 5341000 5342000 12 FALSE  5
-#5343 Sp34_Chr1 5342000 5343000 18 FALSE  6
-#5344 Sp34_Chr1 5343000 5344000  4 FALSE  7
-#5345 Sp34_Chr1 5344000 5345000 13 FALSE  8
-#5346 Sp34_Chr1 5345000 5346000  8 FALSE  9
-#5347 Sp34_Chr1 5346000 5347000 NA  TRUE  1
-
-#again, a bunch of sites with number of SNPs < 16
-
-#keep going
-
-
-some_rows <- as.character(upper[6]:lower[6])
-
-inop[some_rows,]
-
-#> inop[some_rows,]
-#             V1       V2       V3 V4    V5 V6
-#10612 Sp34_Chr1 10611000 10612000 NA  TRUE  2
-#10613 Sp34_Chr1 10612000 10613000 16 FALSE  1
-#10614 Sp34_Chr1 10613000 10614000  9 FALSE  2
-#10615 Sp34_Chr1 10614000 10615000 10 FALSE  3
-#10616 Sp34_Chr1 10615000 10616000  7 FALSE  4
-#10617 Sp34_Chr1 10616000 10617000 12 FALSE  5
-#10618 Sp34_Chr1 10617000 10618000  2 FALSE  6
-#10619 Sp34_Chr1 10618000 10619000  1 FALSE  7
-#10620 Sp34_Chr1 10619000 10620000  6 FALSE  8
-#10621 Sp34_Chr1 10620000 10621000  4 FALSE  9
-#10622 Sp34_Chr1 10621000 10622000 NA  TRUE  1
-
-#again, a bunch of sites with number of SNPs < 16
-
-
-some_rows <- as.character(upper[7]:lower[7])
-
-inop[some_rows,]
-
-#             V1       V2       V3 V4    V5 V6
-#37320 Sp34_Chr2 16724000 16725000 NA  TRUE  2
-#37321 Sp34_Chr2 16725000 16726000  5 FALSE  1
-#37322 Sp34_Chr2 16726000 16727000  5 FALSE  2
-#37323 Sp34_Chr2 16727000 16728000 14 FALSE  3
-#37324 Sp34_Chr2 16728000 16729000 13 FALSE  4
-#37325 Sp34_Chr2 16729000 16730000  7 FALSE  5
-#37326 Sp34_Chr2 16730000 16731000  5 FALSE  6
-#37327 Sp34_Chr2 16731000 16732000 21 FALSE  7
-#37328 Sp34_Chr2 16732000 16733000 22 FALSE  8
-#37329 Sp34_Chr2 16733000 16734000  3 FALSE  9
-#37330 Sp34_Chr2 16734000 16735000 NA  TRUE  1
-
-
-#again, a bunch of sites with number of SNPs < 16
-
-
-some_rows <- as.character(upper[8]:lower[8])
-
-inop[some_rows,]
-
-#             V1      V2      V3 V4    V5 V6
-#42065 Sp34_Chr3 1352000 1353000 NA  TRUE  2
-#42066 Sp34_Chr3 1353000 1354000  7 FALSE  1
-#42067 Sp34_Chr3 1354000 1355000  4 FALSE  2
-#42068 Sp34_Chr3 1355000 1356000 17 FALSE  3
-#42069 Sp34_Chr3 1356000 1357000 31 FALSE  4
-#42070 Sp34_Chr3 1357000 1358000 12 FALSE  5
-#42071 Sp34_Chr3 1358000 1359000 26 FALSE  6
-#42072 Sp34_Chr3 1359000 1360000 26 FALSE  7
-#42073 Sp34_Chr3 1360000 1361000 14 FALSE  8
-#42074 Sp34_Chr3 1361000 1362000 10 FALSE  9
-#42075 Sp34_Chr3 1362000 1363000 NA  TRUE  1
-
-
-some_rows <- as.character(upper[9]:lower[9])
-
-inop[some_rows,]
-
-#             V1      V2      V3 V4    V5 V6
-#45809 Sp34_Chr3 5096000 5097000 NA  TRUE 17
-#45810 Sp34_Chr3 5097000 5098000 12 FALSE  1
-#45811 Sp34_Chr3 5098000 5099000  3 FALSE  2
-#45812 Sp34_Chr3 5099000 5100000  7 FALSE  3
-#45813 Sp34_Chr3 5100000 5101000 16 FALSE  4
-#45814 Sp34_Chr3 5101000 5102000  9 FALSE  5
-#45815 Sp34_Chr3 5102000 5103000 12 FALSE  6
-#45816 Sp34_Chr3 5103000 5104000 12 FALSE  7
-#45817 Sp34_Chr3 5104000 5105000 14 FALSE  8
-#45818 Sp34_Chr3 5105000 5106000 44 FALSE  9
-#45819 Sp34_Chr3 5106000 5107000 NA  TRUE  1
-
-#nope!
-
-
-some_rows <- as.character(upper[10]:lower[11])
-
-inop[some_rows,]
-#             V1       V2       V3 V4    V5 V6
-#58816 Sp34_Chr3 18103000 18104000 NA  TRUE 11
-#58817 Sp34_Chr3 18104000 18105000 33 FALSE  1
-#58818 Sp34_Chr3 18105000 18106000 46 FALSE  2
-#58819 Sp34_Chr3 18106000 18107000 14 FALSE  3
-#58820 Sp34_Chr3 18107000 18108000 10 FALSE  4
-#58821 Sp34_Chr3 18108000 18109000  2 FALSE  5
-#58822 Sp34_Chr3 18109000 18110000 33 FALSE  6
-#58823 Sp34_Chr3 18110000 18111000 20 FALSE  7
-#58824 Sp34_Chr3 18111000 18112000 17 FALSE  8
-#58825 Sp34_Chr3 18112000 18113000 56 FALSE  9
-#58826 Sp34_Chr3 18113000 18114000  4 FALSE 10
-#58827 Sp34_Chr3 18114000 18115000 NA  TRUE  1
-
-#nope, but closer!!
-
-
-some_rows <- as.character(upper[12]:lower[12])
-
-inop[some_rows,]
-#             V1      V2      V3 V4    V5 V6
-#64828 Sp34_Chr4 4678000 4679000 NA  TRUE  3
-#64829 Sp34_Chr4 4679000 4680000 17 FALSE  1
-#64830 Sp34_Chr4 4680000 4681000 20 FALSE  2
-#64831 Sp34_Chr4 4681000 4682000  5 FALSE  3
-#64832 Sp34_Chr4 4682000 4683000 13 FALSE  4
-#64833 Sp34_Chr4 4683000 4684000 34 FALSE  5
-#64834 Sp34_Chr4 4684000 4685000 19 FALSE  6
-#64835 Sp34_Chr4 4685000 4686000 42 FALSE  7
-#64836 Sp34_Chr4 4686000 4687000 26 FALSE  8
-#64837 Sp34_Chr4 4687000 4688000 16 FALSE  9
-#64838 Sp34_Chr4 4688000 4689000 NA  TRUE  1
-
-#nope
-
-
-
-some_rows <- as.character(upper[13]:lower[14])
-
-inop[some_rows,]
-#             V1       V2       V3 V4    V5 V6
-#72742 Sp34_Chr4 12592000 12593000 NA  TRUE  1
-#72743 Sp34_Chr4 12593000 12594000  8 FALSE  1
-#72744 Sp34_Chr4 12594000 12595000  5 FALSE  2
-#72745 Sp34_Chr4 12595000 12596000 22 FALSE  3
-#72746 Sp34_Chr4 12596000 12597000  2 FALSE  4
-#72747 Sp34_Chr4 12597000 12598000  4 FALSE  5
-#72748 Sp34_Chr4 12598000 12599000 23 FALSE  6
-#72749 Sp34_Chr4 12599000 12600000  5 FALSE  7
-#72750 Sp34_Chr4 12600000 12601000  6 FALSE  8
-#72751 Sp34_Chr4 12601000 12602000  9 FALSE  9
-#72752 Sp34_Chr4 12602000 12603000  1 FALSE 10
-#72753 Sp34_Chr4 12603000 12604000 NA  TRUE  1
-
-#nope!
-
-some_rows <- as.character(upper[15]:lower[17])
-
-inop[some_rows,]
-
-#             V1       V2       V3 V4    V5 V6
-#91731 Sp34_Chr5 10563000 10564000 NA  TRUE  2
-#91732 Sp34_Chr5 10564000 10565000  1 FALSE  1
-#91733 Sp34_Chr5 10565000 10566000 10 FALSE  2
-#91734 Sp34_Chr5 10566000 10567000  3 FALSE  3
-#91735 Sp34_Chr5 10567000 10568000  2 FALSE  4
-#91736 Sp34_Chr5 10568000 10569000 11 FALSE  5
-#91737 Sp34_Chr5 10569000 10570000  3 FALSE  6
-#91738 Sp34_Chr5 10570000 10571000  1 FALSE  7
-#91739 Sp34_Chr5 10571000 10572000  2 FALSE  8
-#91740 Sp34_Chr5 10572000 10573000  6 FALSE  9
-#91741 Sp34_Chr5 10573000 10574000  3 FALSE 10
-#91742 Sp34_Chr5 10574000 10575000  5 FALSE 11
-#91743 Sp34_Chr5 10575000 10576000 NA  TRUE  1
-
-#nope!
-
-some_rows <- as.character(upper[18]:lower[19])
-
-inop[some_rows,]
-
-#             V1       V2       V3 V4    V5 V6
-#94167 Sp34_Chr5 12999000 13000000 NA  TRUE  8
-#94168 Sp34_Chr5 13000000 13001000  4 FALSE  1
-#94169 Sp34_Chr5 13001000 13002000  6 FALSE  2
-#94170 Sp34_Chr5 13002000 13003000  5 FALSE  3
-#94171 Sp34_Chr5 13003000 13004000  7 FALSE  4
-#94172 Sp34_Chr5 13004000 13005000  7 FALSE  5
-#94173 Sp34_Chr5 13005000 13006000 13 FALSE  6
-#94174 Sp34_Chr5 13006000 13007000  2 FALSE  7
-#94175 Sp34_Chr5 13007000 13008000  5 FALSE  8
-#94176 Sp34_Chr5 13008000 13009000  1 FALSE  9
-#94177 Sp34_Chr5 13009000 13010000 13 FALSE 10
-#94178 Sp34_Chr5 13010000 13011000 NA  TRUE  1
-
-#nope
-
+#ggsave("segregating_sites_sina_plot.png",height=8,width=10,units="in",bg="white")
 
