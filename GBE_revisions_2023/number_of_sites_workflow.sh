@@ -208,24 +208,3 @@ cat * > $wkdir/revisions_number_of_sites_regions/03_cat/site_positions.tsv
 #okay, R next, see file "number_of_sites.R"
 
 
-
-#other stuff
-##kinda nervous something is up considering the sizes of these files.
-#
-#
-#export PATH=$PATH:/home/gcwoodruff/download/bin/
-#
-#
-#cd /ourdisk/hpc/figwormlab/gcwoodruff/dont_archive/SCRATCH_10-2023/gcwoodruff/pop_gen/elegans/28_bedtools_intersect_genomic_region
-#
-#
-#vcf2bed < elegans_24_exonic.vcf > $wkdir/revisions_number_of_sites_regions/test/elegans_24_exonic.bed
-#
-#cd $wkdir/revisions_number_of_sites_regions/test/
-#
-#awk '$1 == "I"' elegans_24_exonic.bed > elegans_24_exonic_chr_I.bed
-#
-#scp gcwoodruff@dtn2.oscer.ou.edu:/ourdisk/hpc/figwormlab/gcwoodruff/dont_archive/pop_gen_revisions_2023/revisions_number_of_sites_regions/test#/elegans_24_exonic_chr_I.bed /Users/gavin/genome/pop_gen_revisions_9-2023/elegans_24_exonic_chr_I.bed
-
-#okay, looked at the genome browser-- it looks fine. Just, the pseudo-RAD is not really RAD, 3'UTR's are well-annotated, there's lots of alternative splice variants, lots of exons in the well-annotated elegans genome. alright.
-
