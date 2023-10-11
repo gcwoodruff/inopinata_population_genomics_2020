@@ -1,3 +1,4 @@
+#making folder for revision analyses on OU HPC
 cd /ourdisk/hpc/figwormlab/gcwoodruff/dont_archive/
 
 mkdir pop_gen_revisions_2023
@@ -6,21 +7,25 @@ cd pop_gen_revisions_2023
 
 mkdir elegans
 
+#set working directory
 wkdir='/ourdisk/hpc/figwormlab/gcwoodruff/dont_archive/pop_gen_revisions_2023'
 
-cp -r /scratch/gcwoodruff/pop_gen_transfer_may_2023/pop_gen_oscer_transfer_4-28-22/pop_gen_4-2022/18_bcftools_view_biallelic_snps_maf/ /ourdisk/hpc/figwormlab/gcwoodruff/dont_archive/pop_gen_revisions_2023/
+#moving files over to new directory
+#cp -r /scratch/gcwoodruff/pop_gen_transfer_may_2023/pop_gen_oscer_transfer_4-28-22/pop_gen_4-2022/18_bcftools_view_biallelic_snps_maf/ /ourdisk/hpc/figwormlab/gcwoodruff/dont_archive/pop_gen_revisions_2023/
 
 
 #ok, vcf to bed to eventually generate 1kb SNP windows
 
-export PATH=$PATH:/home/gcwoodruff/download/bin/
+#export PATH=$PATH:/home/gcwoodruff/download/bin/
 
+#hyperdivergent regions
 mkdir $wkdir/revisions_hyperdivergent
 
 mkdir $wkdir/revisions_hyperdivergent/00_vcf2bed
 
 cd $wkdir/18_bcftools_view_biallelic_snps_maf/
 
+#convert vcf to bed
 vcf2bed < inopinata_24.vcf > $wkdir/revisions_hyperdivergent/00_vcf2bed/inopinata_24_billalelic_snps.bed
 
 cd $wkdir/elegans/19_bcftools_view_biallelic_snps_maf/
@@ -31,7 +36,7 @@ vcf2bed < elegans_24_og_pseudo_rad.vcf > $wkdir/revisions_hyperdivergent/00_vcf2
 
 vcf2bed < elegans_24_wgs.vcf > $wkdir/revisions_hyperdivergent/00_vcf2bed/elegans_24_wgs_billalelic_snps.bed
 
-#okay, reduce and add a 1, get ready for some bedtools
+#okay, reduce and add a 1, get ready for some bedtools ; here the idea is, each segregating site gets a 1, and then bedtools will sum the ones to get the number of sites per window
 
 mkdir $wkdir/revisions_hyperdivergent/01_awk
 
@@ -49,7 +54,7 @@ awk 'BEGIN {FS="\t"} {OFS="\t"} {print $1,$2,$3,"1", "C. elegans WGS"}' elegans_
 mkdir $wkdir/additional_files
 
 #make 1 kb windows
-module load BEDTools/2.27.1-foss-2018b
+#module load BEDTools/2.27.1-foss-2018b
 
 cd $wkdir/additional_files/inopinata_genome/
 
@@ -82,7 +87,8 @@ cd  $wkdir/revisions_hyperdivergent/02_bedtools_map/
 
 for i in *; do sed 's/\./NA/g' $i > $wkdir/revisions_hyperdivergent/03_sed/$i; done
 
-scp -r gcwoodruff@dtn2.oscer.ou.edu:/ourdisk/hpc/figwormlab/gcwoodruff/dont_archive/pop_gen_revisions_2023/revisions_hyperdivergent/03_sed/ /Users/gavin/genome/pop_gen_revisions_9-2023/
+#get files on local for R; see hyperdivergent_regions_workflow.R
+#scp -r gcwoodruff@dtn2.oscer.ou.edu:/ourdisk/hpc/figwormlab/gcwoodruff/dont_archive/pop_gen_revisions_2023/revisions_hyperdivergent/03_sed/ /Users/gavin/genome/pop_gen_revisions_9-2023/
 
 
 
