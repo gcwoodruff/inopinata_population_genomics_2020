@@ -1,4 +1,4 @@
-
+#For looking at decay of LD
 #made folder /ourdisk/hpc/figwormlab/gcwoodruff/dont_archive/pop_gen_revisions_2023/LD from other machine
 
 mkdir /ourdisk/hpc/figwormlab/gcwoodruff/dont_archive/pop_gen_revisions_2023/LD/2023
