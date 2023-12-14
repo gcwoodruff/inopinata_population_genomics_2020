@@ -59,4 +59,4 @@ awk -F '\t' 'function abs(x){return ((x < 0.0) ? -x : x)} {if (abs($6) < 50001) 
 
 awk -F '\t' 'function abs(x){return ((x < 0.0) ? -x : x)} {if (abs($6) < 50001) print $0}' Sp34_ChrX_out.geno_diff.ld > /ourdisk/hpc/figwormlab/gcwoodruff/dont_archive/pop_gen_revisions_2023/LD/2023/02_awk_abs_50k/Sp34_ChrX_out.geno_diff_less_50kb.ld
 
-#next, workflow.R
+#next, LD_workflow.R
