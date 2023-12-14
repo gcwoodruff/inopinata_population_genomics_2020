@@ -60,7 +60,7 @@ Code for a previous version of this manuscript can be found here.
 2021 code
 ```
 
-Code for work performed towards revisions following peer review in 2023 can be here. This includes: comparisons of inbreeding coefficients among the X and autosomes; work on LD decay; and the examination of potentially hyperdivergent regions.
+Code connected to revisions following peer review in 2023 can be here. This includes: comparisons of inbreeding coefficients among the X and autosomes; work on LD decay; and the examination of potentially hyperdivergent regions.
 ```
 GBE_revisions_2023
 ```
